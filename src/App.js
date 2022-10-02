@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
-
+import GlobalStyles from './components/GlobalStyles';
+import DefaultLayout from './components/Layout';
+import { routes } from './routes';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import AdminLayout from './components/Layout/AdminLayout';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <GlobalStyles>
+      <BrowserRouter>
+        <Routes>
+          {routes.map((route, index) => {
+            const Layout = route.isPrivate === false ? DefaultLayout : AdminLayout;
+            const Page = route.component;
+            return (
+              <Route
+                key={index}
+                path={route.path}
+                element={
+                  <Layout>
+                    <Page />
+                  </Layout>
+                }
+              ></Route>
+            );
+          })}
+        </Routes>
+      </BrowserRouter>
+    </GlobalStyles>
   );
 }
 
