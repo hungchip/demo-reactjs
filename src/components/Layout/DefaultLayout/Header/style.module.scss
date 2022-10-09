@@ -25,6 +25,7 @@
   font-weight: 500;
   display: block;
   line-height: 115px;
+  color: #000;
   @include pc {
     margin-right: 10px;
   }
@@ -50,7 +51,7 @@
   transition: all ease-in-out 0.3s;
 }
 .navLink:visited {
-  color: unset;
+  // color: unset;
 }
 .navLink:hover {
   color: #3f7df6;
@@ -129,10 +130,10 @@ ul.subMenu {
   display: none;
   position: relative;
   span {
-    width: 25px;
+    width: 27px;
     height: 1px;
     background: #3f7df6;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     display: block;
   }
 }

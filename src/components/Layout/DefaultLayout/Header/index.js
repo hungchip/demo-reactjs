@@ -5,14 +5,31 @@ import iconPhone from '@/upload/icon/phone.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { Col, Container, Row } from 'react-bootstrap';
+import { useState } from 'react';
+import MobileMenu from './MobileMenu';
+
 const Header = () => {
+  const [open, setOpen] = useState(false);
+  const handleOpenMenu = () => {
+    setOpen(true);
+  };
+
+  const handleCloseMenu = () => {
+    setOpen(false);
+  };
+  const handleResize = (e) => {
+    if (open && e.target.innerWidth >= 992) {
+      setOpen(false);
+    }
+  };
+  window.addEventListener('resize', handleResize);
   return (
     <>
       <header className={styles.header}>
         <Container>
           <Row>
             <Col lg={3} xs={8} className={styles.menuLeftMB}>
-              <div className={styles.IconMenu}>
+              <div className={styles.IconMenu} onClick={handleOpenMenu}>
                 <span></span>
                 <span></span>
                 <span></span>
@@ -108,6 +125,7 @@ const Header = () => {
           </Row>
         </Container>
       </header>
+      <MobileMenu open={open} handleCloseMenu={handleCloseMenu} />
     </>
   );
 };
