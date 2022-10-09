@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import GlobalStyles from './components/GlobalStyles';
 import DefaultLayout from './components/Layout';
 import { routes } from './routes';

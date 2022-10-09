@@ -1,6 +1,6 @@
 import Header from '@/components/Layout/DefaultLayout/Header';
 import slider from '@/upload/img/slider_1.jpg';
-import style from './style.module.css';
+import style from './style.module.scss';
 const Home = () => {
   return (
     <>
